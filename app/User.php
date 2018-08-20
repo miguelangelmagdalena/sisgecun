@@ -15,7 +15,7 @@ class User extends \TCG\Voyager\Models\User
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','id_estado','id_municipio','id_parroquia',
     ];
 
     /**
@@ -26,4 +26,14 @@ class User extends \TCG\Voyager\Models\User
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function state(){
+        return $this->belongsTo('App\State', 'user_state_fk', 'id_estado');
+    }
+    public function municipio(){
+        return $this->hasMany('App\Municipio', 'user_municipio_fk', 'id_municipio');
+    }
+    public function parroquia(){
+        return $this->hasMany('App\Parroquia', 'user_parroquia_fk', 'id_parroquia');
+    }
 }

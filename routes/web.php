@@ -13,10 +13,25 @@
 
 Route::get('/', function () {
     //return view('welcome');
-    return redirect('/admin');
+   return redirect('/admin');
 });
 
+Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
+
+Auth::routes();
+
+/*
+|--------------------------------------------------------------------------
+| More Auth routes
+|--------------------------------------------------------------------------
+|
+| Auth routes Ajax
+|
+*/
+Route::post('/register/fetchAddress', 'Auth\RegisterController@fetchAddress')->name('register.fetchAddress');
+
+

@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -67,6 +69,55 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'id_estado' => $data['id_estado'],
+            'id_municipio' => $data['id_municipio'],
+            'id_parroquia' => $data['id_parroquia'],
         ]);
+    }
+
+    /**
+     * Show the application registration form.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showRegistrationForm()
+    {
+        $state = DB::table('states')
+                        ->orderBy('estado','asc')
+                        ->get();
+        $municipio = DB::table('municipios')
+                        ->orderBy('municipio','asc')
+                        ->get();
+        $parroquia = DB::table('parroquias')
+                        ->orderBy('parroquia','asc')
+                        ->get();
+        return view('auth.register')->with(compact('state','municipio','parroquia'));
+    }
+
+    /** 
+     * Ajax for estado, municipio
+    */
+    public function fetchAddress(Request $request){
+        $id = $request->get('id');
+        $value = $request->get('value');
+        $child = $request->get('dependent');
+        $table_name = 'municipios';
+        $field_name = 'municipio';
+        if($child == 'id_parroquia'){
+            $table_name = 'parroquias';
+            $field_name = 'parroquia';
+        }
+
+        $data = DB::table($table_name)
+            ->where($id,$value)
+            ->orderBy($field_name,'asc')
+            ->get();
+        $output = '<option value="">Selecciona '.$field_name.' </option>';
+        foreach($data as $row)
+        {
+            $output .= '<option value="'.$row->id.'">'.$row->$field_name.'</option>';
+        }
+        echo $output;
+
     }
 }

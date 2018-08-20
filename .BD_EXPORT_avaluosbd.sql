@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-08-2018 a las 06:01:48
+-- Tiempo de generación: 17-08-2018 a las 19:37:40
 -- Versión del servidor: 10.1.33-MariaDB
 -- Versión de PHP: 7.2.6
 
@@ -58,7 +58,7 @@ CREATE TABLE `cities` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `capital` tinyint(4) NOT NULL,
-  `id_estado` int(11) NOT NULL
+  `id_estado` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -592,18 +592,17 @@ CREATE TABLE `data_rows` (
 --
 
 INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, `required`, `browse`, `read`, `edit`, `add`, `delete`, `details`, `order`) VALUES
-(1, 1, 'id', 'number', 'ID', 1, 0, 0, 0, 0, 0, '', 1),
-(2, 1, 'name', 'text', 'Name', 1, 1, 1, 1, 1, 1, '', 2),
-(3, 1, 'email', 'text', 'Email', 1, 1, 1, 1, 1, 1, '', 3),
-(4, 1, 'password', 'password', 'Password', 1, 0, 0, 1, 1, 0, '', 4),
-(5, 1, 'remember_token', 'text', 'Remember Token', 0, 0, 0, 0, 0, 0, '', 5),
-(6, 1, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 0, 0, 0, '', 6),
-(7, 1, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '', 7),
-(8, 1, 'avatar', 'image', 'Avatar', 0, 1, 1, 1, 1, 1, '', 8),
-(9, 1, 'user_belongsto_role_relationship', 'relationship', 'Role', 0, 1, 1, 1, 1, 0, '{\"model\":\"TCG\\\\Voyager\\\\Models\\\\Role\",\"table\":\"roles\",\"type\":\"belongsTo\",\"column\":\"role_id\",\"key\":\"id\",\"label\":\"display_name\",\"pivot_table\":\"roles\",\"pivot\":\"0\"}', 10),
+(1, 1, 'id', 'number', 'ID', 1, 0, 0, 0, 0, 0, NULL, 1),
+(2, 1, 'name', 'text', 'Name', 1, 1, 1, 1, 1, 1, NULL, 2),
+(3, 1, 'email', 'text', 'Email', 1, 1, 1, 1, 1, 1, NULL, 3),
+(4, 1, 'password', 'password', 'Password', 1, 0, 0, 1, 1, 0, NULL, 4),
+(5, 1, 'remember_token', 'text', 'Remember Token', 0, 0, 0, 0, 0, 0, NULL, 5),
+(6, 1, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 0, 0, 0, NULL, 6),
+(7, 1, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, NULL, 7),
+(8, 1, 'avatar', 'image', 'Avatar', 0, 1, 1, 1, 1, 1, NULL, 8),
+(9, 1, 'user_belongsto_role_relationship', 'relationship', 'Role', 0, 1, 1, 1, 1, 0, '{\"model\":\"TCG\\\\Voyager\\\\Models\\\\Role\",\"table\":\"roles\",\"type\":\"belongsTo\",\"column\":\"role_id\",\"key\":\"id\",\"label\":\"display_name\",\"pivot_table\":\"roles\",\"pivot\":\"0\",\"taggable\":\"0\"}', 10),
 (10, 1, 'user_belongstomany_role_relationship', 'relationship', 'Roles', 0, 1, 1, 1, 1, 0, '{\"model\":\"TCG\\\\Voyager\\\\Models\\\\Role\",\"table\":\"roles\",\"type\":\"belongsToMany\",\"column\":\"id\",\"key\":\"id\",\"label\":\"display_name\",\"pivot_table\":\"user_roles\",\"pivot\":\"1\",\"taggable\":\"0\"}', 11),
-(11, 1, 'locale', 'text', 'Locale', 0, 1, 1, 1, 1, 0, '', 12),
-(12, 1, 'settings', 'hidden', 'Settings', 0, 0, 0, 0, 0, 0, '', 12),
+(12, 1, 'settings', 'hidden', 'Settings', 0, 0, 0, 0, 0, 0, NULL, 12),
 (13, 2, 'id', 'number', 'ID', 1, 0, 0, 0, 0, 0, '', 1),
 (14, 2, 'name', 'text', 'Name', 1, 1, 1, 1, 1, 1, '', 2),
 (15, 2, 'created_at', 'timestamp', 'Created At', 0, 0, 0, 0, 0, 0, '', 3),
@@ -613,7 +612,7 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (19, 3, 'created_at', 'timestamp', 'Created At', 0, 0, 0, 0, 0, 0, '', 3),
 (20, 3, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '', 4),
 (21, 3, 'display_name', 'text', 'Display Name', 1, 1, 1, 1, 1, 1, '', 5),
-(22, 1, 'role_id', 'text', 'Role', 1, 1, 1, 1, 1, 1, '', 9),
+(22, 1, 'role_id', 'text', 'Role', 0, 1, 1, 1, 1, 1, NULL, 9),
 (23, 4, 'id', 'number', 'ID', 1, 0, 0, 0, 0, 0, '', 1),
 (24, 4, 'parent_id', 'select_dropdown', 'Parent', 0, 0, 1, 1, 1, 1, '{\"default\":\"\",\"null\":\"\",\"options\":{\"\":\"-- None --\"},\"relationship\":{\"key\":\"id\",\"label\":\"name\"}}', 2),
 (25, 4, 'order', 'text', 'Order', 1, 1, 1, 1, 1, 1, '{\"default\":1}', 3),
@@ -675,7 +674,13 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (86, 13, 'id_estado', 'text', 'Id Estado', 1, 1, 1, 1, 1, 1, NULL, 6),
 (87, 14, 'parroquia_belongsto_municipio_relationship', 'relationship', 'municipios', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Municipio\",\"table\":\"municipios\",\"type\":\"belongsTo\",\"column\":\"id_municipio\",\"key\":\"id\",\"label\":\"municipio\",\"pivot_table\":\"categories\",\"pivot\":\"0\",\"taggable\":\"0\"}', 3),
 (88, 14, 'parroquia', 'text', 'Parroquia', 1, 1, 1, 1, 1, 1, NULL, 2),
-(89, 14, 'id_municipio', 'text', 'Id Municipio', 0, 1, 1, 1, 1, 1, NULL, 6);
+(89, 14, 'id_municipio', 'text', 'Id Municipio', 0, 1, 1, 1, 1, 1, NULL, 6),
+(90, 1, 'user_belongsto_state_relationship', 'relationship', 'Estados', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\State\",\"table\":\"states\",\"type\":\"belongsTo\",\"column\":\"id_estado\",\"key\":\"id\",\"label\":\"estado\",\"pivot_table\":\"categories\",\"pivot\":\"0\",\"taggable\":\"0\"}', 13),
+(91, 1, 'user_belongsto_municipio_relationship', 'relationship', 'municipios', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Municipio\",\"table\":\"municipios\",\"type\":\"belongsTo\",\"column\":\"id_municipio\",\"key\":\"id\",\"label\":\"municipio\",\"pivot_table\":\"categories\",\"pivot\":\"0\",\"taggable\":\"0\"}', 14),
+(92, 1, 'user_belongsto_parroquia_relationship', 'relationship', 'parroquias', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Parroquia\",\"table\":\"parroquias\",\"type\":\"belongsTo\",\"column\":\"id_parroquia\",\"key\":\"id\",\"label\":\"parroquia\",\"pivot_table\":\"categories\",\"pivot\":\"0\",\"taggable\":\"0\"}', 15),
+(93, 1, 'id_estado', 'text', 'Id Estado', 0, 1, 1, 1, 1, 1, NULL, 11),
+(94, 1, 'id_municipio', 'text', 'Id Municipio', 0, 1, 1, 1, 1, 1, NULL, 12),
+(95, 1, 'id_parroquia', 'text', 'Id Parroquia', 0, 1, 1, 1, 1, 1, NULL, 13);
 
 -- --------------------------------------------------------
 
@@ -706,7 +711,7 @@ CREATE TABLE `data_types` (
 --
 
 INSERT INTO `data_types` (`id`, `name`, `slug`, `display_name_singular`, `display_name_plural`, `icon`, `model_name`, `policy_name`, `controller`, `description`, `generate_permissions`, `server_side`, `details`, `created_at`, `updated_at`) VALUES
-(1, 'users', 'users', 'User', 'Users', 'voyager-person', 'TCG\\Voyager\\Models\\User', 'TCG\\Voyager\\Policies\\UserPolicy', '', '', 1, 0, NULL, '2018-08-13 17:29:11', '2018-08-13 17:29:11'),
+(1, 'users', 'users', 'User', 'Users', 'voyager-person', 'TCG\\Voyager\\Models\\User', 'TCG\\Voyager\\Policies\\UserPolicy', NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null}', '2018-08-13 17:29:11', '2018-08-14 18:38:24'),
 (2, 'menus', 'menus', 'Menu', 'Menus', 'voyager-list', 'TCG\\Voyager\\Models\\Menu', NULL, '', '', 1, 0, NULL, '2018-08-13 17:29:11', '2018-08-13 17:29:11'),
 (3, 'roles', 'roles', 'Role', 'Roles', 'voyager-lock', 'TCG\\Voyager\\Models\\Role', NULL, '', '', 1, 0, NULL, '2018-08-13 17:29:11', '2018-08-13 17:29:11'),
 (4, 'categories', 'categories', 'Category', 'Categories', 'voyager-categories', 'TCG\\Voyager\\Models\\Category', NULL, '', '', 1, 0, NULL, '2018-08-13 17:29:13', '2018-08-13 17:29:13'),
@@ -841,7 +846,7 @@ CREATE TABLE `municipios` (
   `municipio` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `id_estado` int(11) NOT NULL
+  `id_estado` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -1224,7 +1229,7 @@ CREATE TABLE `parroquias` (
   `parroquia` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `id_municipio` int(11) DEFAULT NULL
+  `id_municipio` int(10) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -2492,6 +2497,8 @@ CREATE TABLE `permission_role` (
 INSERT INTO `permission_role` (`permission_id`, `role_id`) VALUES
 (1, 1),
 (1, 2),
+(1, 3),
+(1, 4),
 (2, 1),
 (3, 1),
 (4, 1),
@@ -2517,21 +2524,28 @@ INSERT INTO `permission_role` (`permission_id`, `role_id`) VALUES
 (24, 1),
 (25, 1),
 (26, 1),
+(26, 3),
 (27, 1),
 (28, 1),
 (29, 1),
 (30, 1),
 (31, 1),
 (31, 2),
+(31, 3),
+(31, 4),
 (32, 1),
 (32, 2),
+(32, 3),
+(32, 4),
 (33, 1),
 (34, 1),
 (35, 1),
 (36, 1),
 (36, 2),
+(36, 3),
 (37, 1),
 (37, 2),
+(37, 3),
 (38, 1),
 (39, 1),
 (40, 1),
@@ -2608,7 +2622,9 @@ CREATE TABLE `roles` (
 
 INSERT INTO `roles` (`id`, `name`, `display_name`, `created_at`, `updated_at`) VALUES
 (1, 'admin', 'Administrador', '2018-08-13 17:29:11', '2018-08-13 21:42:07'),
-(2, 'user', 'Usuario Normal', '2018-08-13 17:29:11', '2018-08-13 21:42:29');
+(2, 'user', 'Usuario Normal', '2018-08-13 17:29:11', '2018-08-13 21:42:29'),
+(3, 'inspector', 'Inspector', '2018-08-14 16:58:32', '2018-08-14 16:58:48'),
+(4, 'analista', 'Analista', '2018-08-14 17:15:03', '2018-08-14 17:15:03');
 
 -- --------------------------------------------------------
 
@@ -2757,17 +2773,22 @@ CREATE TABLE `users` (
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `settings` text COLLATE utf8mb4_unicode_ci,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `id_estado` int(10) UNSIGNED DEFAULT NULL,
+  `id_municipio` int(10) UNSIGNED DEFAULT NULL,
+  `id_parroquia` int(10) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `users`
 --
 
-INSERT INTO `users` (`id`, `role_id`, `name`, `email`, `avatar`, `password`, `remember_token`, `settings`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Admin', 'admin@admin.com', 'users/default.png', '$2y$10$Bdte22LQ7DMRxiAtojqoQeP6Ve3/22LFiFrXG8AVxFtn3DLjQRumq', 'lkw9iK7FhwNeiGUhrJyBIitf4L2U3EmJGvvl4IaFbO9C7s4yQt4To7UJAlff', '{\"locale\":\"es\"}', '2018-08-13 17:29:13', '2018-08-13 18:48:45'),
-(2, 1, 'Miguel Magdalena', 'miguelangelmagdalena@gmail.com', 'users/default.png', '$2y$10$Cf39lX9.wVoe8cToy03gtOMGw/UfSnKdNHzOyQehML/ZICRa6MqMS', 'HwWYGsPIhCDYHYudkm8ENyGtxtcckvnbLw54M7nxQopqlgKM7mQAotoHuzGS', '{\"locale\":\"es\"}', '2018-08-13 18:49:26', '2018-08-13 21:52:43'),
-(3, 2, 'Silena Ybarra', 'silenaybarra@yahoo.com', 'users/default.png', '$2y$10$XxpaA.7sFG8v97S40m8Ih.uFQfyJFM9ixmAglL5v4V9xYIigTSgVe', 'cTxfUCWXRmNcHzUnXiubAV9aI0HzESVQ8eHKRQHRTa5TnsCHpOD4NgMGDc54', '{\"locale\":\"es\"}', '2018-08-13 21:54:06', '2018-08-13 22:15:04');
+INSERT INTO `users` (`id`, `role_id`, `name`, `email`, `avatar`, `password`, `remember_token`, `settings`, `created_at`, `updated_at`, `id_estado`, `id_municipio`, `id_parroquia`) VALUES
+(1, 1, 'Admin', 'admin@admin.com', 'users/default.png', '$2y$10$Bdte22LQ7DMRxiAtojqoQeP6Ve3/22LFiFrXG8AVxFtn3DLjQRumq', 'TKZllpAeR0knGAijrszf1BGkBNWG2PqhnUd5YaspQDVP401TPZn7rU1lxAso', '{\"locale\":\"es\"}', '2018-08-13 17:29:13', '2018-08-13 18:48:45', NULL, NULL, NULL),
+(2, 1, 'Miguel Magdalena', 'miguelangelmagdalena@gmail.com', 'users/default.png', '$2y$10$Cf39lX9.wVoe8cToy03gtOMGw/UfSnKdNHzOyQehML/ZICRa6MqMS', 'HwWYGsPIhCDYHYudkm8ENyGtxtcckvnbLw54M7nxQopqlgKM7mQAotoHuzGS', '{\"locale\":\"es\"}', '2018-08-13 18:49:26', '2018-08-13 21:52:43', NULL, NULL, NULL),
+(3, 2, 'Silena Ybarra', 'silenaybarra@yahoo.com', 'users/default.png', '$2y$10$XxpaA.7sFG8v97S40m8Ih.uFQfyJFM9ixmAglL5v4V9xYIigTSgVe', 'cTxfUCWXRmNcHzUnXiubAV9aI0HzESVQ8eHKRQHRTa5TnsCHpOD4NgMGDc54', '{\"locale\":\"es\"}', '2018-08-13 21:54:06', '2018-08-13 22:15:04', NULL, NULL, NULL),
+(4, 2, 'Miguel Angel', 'miguel@gmail.com', 'users/default.png', '$2y$10$9xpiNR2KDkzAlLLaWPU5gunTa13su0FHS7GxzCrA43k0gJ1Hna2cy', '2FgRsRH9hz5LzYV3fw9FpIAacyburfM43kda4IWKYSBiSBRdQmlmohEJ3kOY', NULL, '2018-08-15 22:24:33', '2018-08-15 22:24:33', NULL, NULL, NULL),
+(5, 2, 'user1', 'user1@gmail.com', 'users/default.png', '$2y$10$XnL/P2FXemGF1LpMDn8A2OJE5VoDS3OQPldhczg3QZp5v5IINt5Pa', 'fAS5fUqmj1LGspc2np01bWRhYQnlqq4RcMXoEh0ZVf6acFLqfKheNHFULnfE', NULL, '2018-08-16 22:32:10', '2018-08-16 22:32:10', 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -2797,7 +2818,9 @@ ALTER TABLE `categories`
 --
 ALTER TABLE `cities`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `cities_id_estado_index` (`id_estado`);
+  ADD KEY `cities_id_estado_index` (`id_estado`),
+  ADD KEY `id_estado` (`id_estado`),
+  ADD KEY `id_estado_2` (`id_estado`);
 
 --
 -- Indices de la tabla `data_rows`
@@ -2839,7 +2862,8 @@ ALTER TABLE `migrations`
 --
 ALTER TABLE `municipios`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `municipios_id_estado_index` (`id_estado`);
+  ADD KEY `municipios_id_estado_index` (`id_estado`),
+  ADD KEY `id_estado` (`id_estado`);
 
 --
 -- Indices de la tabla `pages`
@@ -2853,7 +2877,8 @@ ALTER TABLE `pages`
 --
 ALTER TABLE `parroquias`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `parroquias_id_municipio_index` (`id_municipio`);
+  ADD KEY `parroquias_id_municipio_index` (`id_municipio`),
+  ADD KEY `id_municipio` (`id_municipio`);
 
 --
 -- Indices de la tabla `password_resets`
@@ -2946,7 +2971,7 @@ ALTER TABLE `cities`
 -- AUTO_INCREMENT de la tabla `data_rows`
 --
 ALTER TABLE `data_rows`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
 
 --
 -- AUTO_INCREMENT de la tabla `data_types`
@@ -2958,7 +2983,7 @@ ALTER TABLE `data_types`
 -- AUTO_INCREMENT de la tabla `menus`
 --
 ALTER TABLE `menus`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `menu_items`
@@ -3006,7 +3031,7 @@ ALTER TABLE `posts`
 -- AUTO_INCREMENT de la tabla `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `settings`
@@ -3030,7 +3055,7 @@ ALTER TABLE `translations`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Restricciones para tablas volcadas
@@ -3043,6 +3068,12 @@ ALTER TABLE `categories`
   ADD CONSTRAINT `categories_parent_id_foreign` FOREIGN KEY (`parent_id`) REFERENCES `categories` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --
+-- Filtros para la tabla `cities`
+--
+ALTER TABLE `cities`
+  ADD CONSTRAINT `cities_ibfk_1` FOREIGN KEY (`id_estado`) REFERENCES `states` (`id`);
+
+--
 -- Filtros para la tabla `data_rows`
 --
 ALTER TABLE `data_rows`
@@ -3053,6 +3084,18 @@ ALTER TABLE `data_rows`
 --
 ALTER TABLE `menu_items`
   ADD CONSTRAINT `menu_items_menu_id_foreign` FOREIGN KEY (`menu_id`) REFERENCES `menus` (`id`) ON DELETE CASCADE;
+
+--
+-- Filtros para la tabla `municipios`
+--
+ALTER TABLE `municipios`
+  ADD CONSTRAINT `municipios_ibfk_1` FOREIGN KEY (`id_estado`) REFERENCES `states` (`id`);
+
+--
+-- Filtros para la tabla `parroquias`
+--
+ALTER TABLE `parroquias`
+  ADD CONSTRAINT `parroquias_ibfk_1` FOREIGN KEY (`id_municipio`) REFERENCES `municipios` (`id`);
 
 --
 -- Filtros para la tabla `permission_role`
