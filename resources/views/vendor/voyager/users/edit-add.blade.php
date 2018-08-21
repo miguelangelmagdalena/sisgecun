@@ -51,7 +51,40 @@
                                        value="@if(isset($dataTypeContent->email)){{ $dataTypeContent->email }}@endif">
                             </div>
 
+                            <div class="form-group ">
+                                <label for="id_estado" class="">{{ __('Estado') }}  </label>
 
+                                <div class="">
+                                    <select id="id_estado" class="dynamic-address form-control{{ $errors->has('id_estado') ? ' is-invalid' : '' }}" name="id_estado" value="@if(isset($dataTypeContent->id_estado)){{ $dataTypeContent->id_estado }}@endif" data-dependent="id_municipio" autofocus> 
+                                        <option value="">Selecciona un Estado</option>
+                                        @foreach($state as $st)
+                                        <option value="{{ $st->id }}">{{ $st->estado }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group ">
+                                <label for="id_municipio" class="">{{ __('Municipio') }}</label>
+
+                                <div class="">
+                                    <select id="id_municipio" class="dynamic-address form-control{{ $errors->has('id_municipio') ? ' is-invalid' : '' }}" name="id_municipio" value="{{ old('id_municipio') }}" data-dependent="id_parroquia" autofocus> 
+                                        <option value="">Selecciona municipio</option>
+
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group ">
+                                <label for="id_parroquia" class="">{{ __('Parroquia') }}</label>
+
+                                <div class="">
+                                    <select id="id_parroquia" class="form-control{{ $errors->has('id_parroquia') ? ' is-invalid' : '' }}" name="id_parroquia" value="{{ old('id_parroquia') }}" autofocus> 
+                                        <option value="">Selecciona parroquia</option>
+
+                                    </select>
+                                </div>
+                            </div>
 
                             <div class="form-group">
                                 <label for="password">{{ __('voyager::generic.password') }}</label>
@@ -136,6 +169,11 @@
         </form>
     </div>
 @stop
+
+@section('scripts')
+<script src="{{asset('js/jquery-3.3.1.min.js')}}"></script>
+<script src="{{asset('js/voyager/user_edit.js')}}"></script>
+@show
 
 @section('javascript')
 

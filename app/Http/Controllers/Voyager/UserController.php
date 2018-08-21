@@ -200,7 +200,11 @@ class userController extends VoyagerBaseController
             $view = "voyager::$slug.edit-add";
         }
 
-        return Voyager::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable'));
+        $state = DB::table('states')
+                        ->orderBy('estado','asc')
+                        ->get();
+
+        return Voyager::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable','state'));
     }
 
     // POST BR(E)AD
@@ -504,5 +508,33 @@ class userController extends VoyagerBaseController
             $i->$column = ($key + 1);
             $i->save();
         }
+    }
+
+
+    /** 
+     * Ajax for estado, municipio
+    */
+    public function fetchAddress(Request $request){
+        $id = $request->get('id');
+        $value = $request->get('value');
+        $child = $request->get('dependent');
+        $table_name = 'municipios';
+        $field_name = 'municipio';
+        if($child == 'id_parroquia'){
+            $table_name = 'parroquias';
+            $field_name = 'parroquia';
+        }
+
+        $data = DB::table($table_name)
+            ->where($id,$value)
+            ->orderBy($field_name,'asc')
+            ->get();
+        $output = '<option value="">Selecciona '.$field_name.' </option>';
+        foreach($data as $row)
+        {
+            $output .= '<option value="'.$row->id.'">'.$row->$field_name.'</option>';
+        }
+        echo $output;
+
     }
 }

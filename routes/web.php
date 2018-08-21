@@ -34,4 +34,7 @@ Auth::routes();
 */
 Route::post('/register/fetchAddress', 'Auth\RegisterController@fetchAddress')->name('register.fetchAddress');
 
+Route::post('/user_edit/fetchAddress', 'Voyager\userController@fetchAddress')->name('user_edit.fetchAddress');
+
+
 
