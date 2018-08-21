@@ -85,13 +85,7 @@ class RegisterController extends Controller
         $state = DB::table('states')
                         ->orderBy('estado','asc')
                         ->get();
-        $municipio = DB::table('municipios')
-                        ->orderBy('municipio','asc')
-                        ->get();
-        $parroquia = DB::table('parroquias')
-                        ->orderBy('parroquia','asc')
-                        ->get();
-        return view('auth.register')->with(compact('state','municipio','parroquia'));
+        return view('auth.register')->with(compact('state'));
     }
 
     /** 

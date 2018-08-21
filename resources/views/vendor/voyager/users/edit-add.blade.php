@@ -51,6 +51,8 @@
                                        value="@if(isset($dataTypeContent->email)){{ $dataTypeContent->email }}@endif">
                             </div>
 
+
+
                             <div class="form-group">
                                 <label for="password">{{ __('voyager::generic.password') }}</label>
                                 @if(isset($dataTypeContent->password))
@@ -84,16 +86,6 @@
                             @endcan
 
                            
-                            <div class="form-group">
-                                <label for="default_state">{{ __('voyager::profile.states') }}</label>
-                                @php
-                                    $dataTypeRows = $dataType->{(isset($dataTypeContent->id) ? 'editRows' : 'addRows' )};
-
-                                    $row     = $dataTypeRows->where('field', 'user_belongsto_role_relationship')->first();
-                                    $options = json_decode($row->details);
-                                @endphp
-                                @include('voyager::formfields.relationship')
-                            </div>
                             
 
                             @php
@@ -146,6 +138,7 @@
 @stop
 
 @section('javascript')
+
     <script>
         $('document').ready(function () {
             $('.toggleswitch').bootstrapToggle();

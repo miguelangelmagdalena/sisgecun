@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-08-2018 a las 19:37:40
+-- Tiempo de generación: 20-08-2018 a las 18:56:21
 -- Versión del servidor: 10.1.33-MariaDB
 -- Versión de PHP: 7.2.6
 
@@ -2784,11 +2784,11 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `role_id`, `name`, `email`, `avatar`, `password`, `remember_token`, `settings`, `created_at`, `updated_at`, `id_estado`, `id_municipio`, `id_parroquia`) VALUES
-(1, 1, 'Admin', 'admin@admin.com', 'users/default.png', '$2y$10$Bdte22LQ7DMRxiAtojqoQeP6Ve3/22LFiFrXG8AVxFtn3DLjQRumq', 'TKZllpAeR0knGAijrszf1BGkBNWG2PqhnUd5YaspQDVP401TPZn7rU1lxAso', '{\"locale\":\"es\"}', '2018-08-13 17:29:13', '2018-08-13 18:48:45', NULL, NULL, NULL),
+(1, 1, 'Admin', 'admin@admin.com', 'users/default.png', '$2y$10$Bdte22LQ7DMRxiAtojqoQeP6Ve3/22LFiFrXG8AVxFtn3DLjQRumq', 'ApeF4pqSwD8v6YviBTiddayQLtB1gpbhuYtxNuPPMjyWeWfPkBbK59tIbch5', '{\"locale\":\"es\"}', '2018-08-13 17:29:13', '2018-08-13 18:48:45', NULL, NULL, NULL),
 (2, 1, 'Miguel Magdalena', 'miguelangelmagdalena@gmail.com', 'users/default.png', '$2y$10$Cf39lX9.wVoe8cToy03gtOMGw/UfSnKdNHzOyQehML/ZICRa6MqMS', 'HwWYGsPIhCDYHYudkm8ENyGtxtcckvnbLw54M7nxQopqlgKM7mQAotoHuzGS', '{\"locale\":\"es\"}', '2018-08-13 18:49:26', '2018-08-13 21:52:43', NULL, NULL, NULL),
-(3, 2, 'Silena Ybarra', 'silenaybarra@yahoo.com', 'users/default.png', '$2y$10$XxpaA.7sFG8v97S40m8Ih.uFQfyJFM9ixmAglL5v4V9xYIigTSgVe', 'cTxfUCWXRmNcHzUnXiubAV9aI0HzESVQ8eHKRQHRTa5TnsCHpOD4NgMGDc54', '{\"locale\":\"es\"}', '2018-08-13 21:54:06', '2018-08-13 22:15:04', NULL, NULL, NULL),
 (4, 2, 'Miguel Angel', 'miguel@gmail.com', 'users/default.png', '$2y$10$9xpiNR2KDkzAlLLaWPU5gunTa13su0FHS7GxzCrA43k0gJ1Hna2cy', '2FgRsRH9hz5LzYV3fw9FpIAacyburfM43kda4IWKYSBiSBRdQmlmohEJ3kOY', NULL, '2018-08-15 22:24:33', '2018-08-15 22:24:33', NULL, NULL, NULL),
-(5, 2, 'user1', 'user1@gmail.com', 'users/default.png', '$2y$10$XnL/P2FXemGF1LpMDn8A2OJE5VoDS3OQPldhczg3QZp5v5IINt5Pa', 'fAS5fUqmj1LGspc2np01bWRhYQnlqq4RcMXoEh0ZVf6acFLqfKheNHFULnfE', NULL, '2018-08-16 22:32:10', '2018-08-16 22:32:10', 1, 1, 1);
+(6, 2, 'Mitchell', 'mitch@gmail.com', 'users/default.png', '$2y$10$TDmonoYeDJYDTdAn.ZRkMuP232SXqoDRn9iEqzKH0GOrJu48ezHJu', 'xCQW1AHjCLUsptNtbZHfmkT8tmBEfxaxhvFST5L4BoWGXQVxNNy1E0S6UI1L', NULL, '2018-08-20 19:33:45', '2018-08-20 19:33:45', 24, 462, 1137),
+(7, 2, 'Miguel Magdalena', 'aa@gmail.com', 'users/default.png', '$2y$10$mTYvX30H87vxesZiObSOU.5Qmtu5rIiBgWt48zYBef5Zy69R25FSm', 'LF9QUnSRMX4qj1pv05ukhSXN8M1RQJWGpD0Lay0suvO5iVAxta2I8GrvFPDC', NULL, '2018-08-20 19:37:23', '2018-08-20 19:37:23', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -3055,7 +3055,7 @@ ALTER TABLE `translations`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Restricciones para tablas volcadas
