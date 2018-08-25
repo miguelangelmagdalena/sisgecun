@@ -9,38 +9,35 @@
     <title>Admin - {{ Voyager::setting("admin.title") }}</title>
     <link rel="stylesheet" href="{{ voyager_asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/custom_styles.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style_login.1.css') }}">
     @if (config('voyager.multilingual.rtl'))
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-rtl/3.4.0/css/bootstrap-rtl.css">
         <link rel="stylesheet" href="{{ voyager_asset('css/rtl.css') }}">
     @endif
     <style>
-        body {
+       .login100-form-title{
             background-image:url('{{ Voyager::image( Voyager::setting("admin.bg_image"), voyager_asset("images/bg.jpg") ) }}');
-            background-color: {{ Voyager::setting("admin.bg_color", "#FFFFFF" ) }};
+            background-size: cover;
         }
-        body.login .login-sidebar {
-            border-top:5px solid {{ config('voyager.primary_color','#22A7F0') }};
-            overflow: auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        
+        .container-login100 {
+            background: {{ Voyager::setting("admin.bg_login") }};
         }
-        @media (max-width: 767px) {
-            body.login .login-sidebar {
-                border-top:0px !important;
-                border-left:5px solid {{ config('voyager.primary_color','#22A7F0') }};
-                height: 0px;
-            }
-            body.login .login-container2 {
-                align-self: end;
-            }
+        .focus-input100::before {
+            background: {{ config('voyager.primary_color','#22A7F0') }};
+        }
+        a:hover {
+            color: {{ config('voyager.primary_color','#22A7F0') }};
+        }
 
-        }
         body.login .form-group-default.focused{
             border-color:{{ config('voyager.primary_color','#22A7F0') }};
         }
         .login-button, .bar:before, .bar:after{
             background:{{ config('voyager.primary_color','#22A7F0') }};
+        }
+        .new-user{
+            border: 1px solid {{ config('voyager.primary_color','#22A7F0') }};
         }
 
 
@@ -49,31 +46,14 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
 </head>
 <body class="login">
-<div class="container-fluid">
-    <div class="row">
-        <div class="faded-bg animated"></div>
-        <div class="hidden-xs col-sm-7 col-md-8">
-            <div class="clearfix">
-                <div class="col-sm-12 col-md-10 col-md-offset-2">
-                    <div class="logo-title-container">
-                        <?php $admin_logo_img = Voyager::setting('admin.icon_image', ''); ?>
-                        @if($admin_logo_img == '')
-                        <img class="img-responsive pull-left flip logo hidden-xs animated fadeIn" src="{{ voyager_asset('images/logo-icon-light.png') }}" alt="Logo Icon">
-                        @else
-                        <img class="img-responsive pull-left flip logo hidden-xs animated fadeIn" src="{{ Voyager::image($admin_logo_img) }}" alt="Logo Icon">
-                        @endif
-                        <div class="copy animated fadeIn">
-                            <h1>{{ Voyager::setting('admin.title', 'Voyager') }}</h1>
-                            <p>{{ Voyager::setting('admin.description', __('voyager::login.welcome')) }}</p>
-                        </div>
-                    </div> <!-- .logo-title-container -->
-                </div>
-            </div>
-        </div>
+    <div class="limiter">
+            <div class="container-login100">
+                <div class="wrap-login100">
 
-        <div class="col-xs-12 col-sm-5 col-md-4 login-sidebar">
+                    <img class="banner-home" src="{{ Voyager::image( Voyager::setting("admin.bg_image"), voyager_asset("images/bg.jpg") ) }}" alt="Smiley face">
 
-            <div class="login-container2">
+                        <div class="login-container">
+
 
                 <p>Registrarse</p>
 
@@ -164,18 +144,26 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="{{ __('validation.attributes.password_confirmation') }}" required>
                             </div>
                         </div>
-
-                        <div class="form-group">
-                            <div class="col-sm-6 btn-padd">
-                                <button type="button" class="btn btn-danger login-button red" onclick="window.location='/'">
-                                    Cancelar
-                                </button>
-                            </div>
+                        
+                        @if(!$errors->isEmpty())
+                        <div class="alert alert-red">
+                            <ul class="list-unstyled">
+                                @foreach($errors->all() as $err)
+                                <li>{{ $err }}</li>
+                                @endforeach
+                            </ul>
                         </div>
+                        @endif
+
+
 
                         <div class="form-group ">
                             <div class="col-sm-6 btn-padd">
 
+                                <button type="button" class="btn btn-danger login-button red" onclick="window.location='/'">
+                                    Cancelar
+                                </button>
+                                
                                 <button type="submit" class="btn btn-block login-button">
                                     <span class="signingin hidden"><span class="voyager-refresh"></span> {{ __('Registrarse') }}</span>
                                     <span class="signin">{{ __('Registrarse') }}</span>
@@ -185,23 +173,21 @@
 
                     </form>
 
-              <div style="clear:both"></div>
+              
 
-              @if(!$errors->isEmpty())
-              <div class="alert alert-red">
-                <ul class="list-unstyled">
-                    @foreach($errors->all() as $err)
-                    <li>{{ $err }}</li>
-                    @endforeach
-                </ul>
-              </div>
-              @endif
+              
 
-            </div> <!-- .login-container -->
+<div style="clear:both"></div>
 
-        </div> <!-- .login-sidebar -->
-    </div> <!-- .row -->
-</div> <!-- .container-fluid -->
+
+
+
+</div> <!-- .login-container -->
+
+</div> <!-- .login-sidebar -->
+</div>
+</div>
+</div>
 <script src="{{asset('js/jquery-3.3.1.min.js')}}"></script>
 <script src="{{asset('js/custom_register.js')}}"></script>
 </body>
