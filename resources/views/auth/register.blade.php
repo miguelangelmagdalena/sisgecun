@@ -161,9 +161,14 @@
                             <div class="col-sm-6 btn-padd">
 
                                 <button type="button" class="btn btn-danger login-button red" onclick="window.location='/'">
-                                    Cancelar
+                                    
+                                    <span class="signingin hidden"><span class="voyager-refresh"></span> Regresando</span>
+                                    <span class="signin">Cancelar</span>
                                 </button>
-                                
+
+                            </div>
+                            <div class="col-sm-6 btn-padd">
+
                                 <button type="submit" class="btn btn-block login-button">
                                     <span class="signingin hidden"><span class="voyager-refresh"></span> {{ __('Registrarse') }}</span>
                                     <span class="signin">{{ __('Registrarse') }}</span>
