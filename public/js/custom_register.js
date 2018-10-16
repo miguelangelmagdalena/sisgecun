@@ -28,7 +28,7 @@ $(document).ready(function(){
 
     /*
         Ajax para consultar direcciones (Estado -> Municipio -> Parroquia)
-    */
+    
     $('.dynamic-address').change(function(){
         if($(this).val() != '')
         {
@@ -48,11 +48,11 @@ $(document).ready(function(){
         
             })
         }
-    });
+    });*/
 
     /*
         Limpia los valores de direcciones luego de cambiar alguno precedente (Estado <- Municipio <- Parroquia)
-    */
+    
     $('#id_estado').change(function(){
         $('#id_municipio').val('');
         $('#id_parroquia').val('');
@@ -61,5 +61,5 @@ $(document).ready(function(){
     $('#id_municipio').change(function(){
         $('#id_parroquia').val('');
     });
-
+*/
 });

@@ -87,42 +87,7 @@
                                 @endif
                             </div>
                         </div>
-
-                        <div class="form-group form-group-default">
-                            <label for="id_estado" class="">{{ __('estado') }}</label>
-
-                            <div class="controls">
-                                <select id="id_estado" class="dynamic-address form-control{{ $errors->has('id_estado') ? ' is-invalid' : '' }}" name="id_estado" value="{{ old('id_estado') }}" data-dependent="id_municipio" > 
-                                    <option value="">Selecciona un Estado</option>
-                                    @foreach($state as $st)
-                                    <option value="{{ $st->id }}">{{ $st->estado }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="form-group form-group-default">
-                            <label for="id_municipio" class="">{{ __('municipio') }}</label>
-
-                            <div class="controls">
-                                <select id="id_municipio" class="dynamic-address form-control{{ $errors->has('id_municipio') ? ' is-invalid' : '' }}" name="id_municipio" value="{{ old('id_municipio') }}" data-dependent="id_parroquia" > 
-                                    <option value="">Selecciona municipio</option>
-
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="form-group form-group-default">
-                            <label for="id_parroquia" class="">{{ __('parroquia') }}</label>
-
-                            <div class="controls">
-                                <select id="id_parroquia" class="form-control{{ $errors->has('id_parroquia') ? ' is-invalid' : '' }}" name="id_parroquia" value="{{ old('id_parroquia') }}" > 
-                                    <option value="">Selecciona parroquia</option>
-
-                                </select>
-                            </div>
-                        </div>
-
+             
                         <div class="form-group form-group-default">
                             <label for="password" class="">{{ __('validation.attributes.password') }}</label>
 

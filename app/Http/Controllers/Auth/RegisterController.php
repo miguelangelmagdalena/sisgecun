@@ -52,7 +52,7 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
+            'email' => 'required|string|email|max:255|unique:'.(new User())->getTable(),
             'password' => 'required|string|min:6|confirmed',
         ]);
     }
@@ -69,9 +69,6 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'id_estado' => $data['id_estado'],
-            'id_municipio' => $data['id_municipio'],
-            'id_parroquia' => $data['id_parroquia'],
         ]);
     }
 
@@ -82,36 +79,6 @@ class RegisterController extends Controller
      */
     public function showRegistrationForm()
     {
-        $state = DB::table('states')
-                        ->orderBy('estado','asc')
-                        ->get();
-        return view('auth.register')->with(compact('state'));
-    }
-
-    /** 
-     * Ajax for estado, municipio
-    */
-    public function fetchAddress(Request $request){
-        $id = $request->get('id');
-        $value = $request->get('value');
-        $child = $request->get('dependent');
-        $table_name = 'municipios';
-        $field_name = 'municipio';
-        if($child == 'id_parroquia'){
-            $table_name = 'parroquias';
-            $field_name = 'parroquia';
-        }
-
-        $data = DB::table($table_name)
-            ->where($id,$value)
-            ->orderBy($field_name,'asc')
-            ->get();
-        $output = '<option value="">Selecciona '.$field_name.' </option>';
-        foreach($data as $row)
-        {
-            $output .= '<option value="'.$row->id.'">'.$row->$field_name.'</option>';
-        }
-        echo $output;
-
+        return view('auth.register');
     }
 }

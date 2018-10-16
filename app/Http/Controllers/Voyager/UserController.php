@@ -200,11 +200,7 @@ class userController extends VoyagerBaseController
             $view = "voyager::$slug.edit-add";
         }
 
-        $state = DB::table('states')
-                        ->orderBy('estado','asc')
-                        ->get();
-
-        return Voyager::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable','state'));
+        return Voyager::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable'));
     }
 
     // POST BR(E)AD
@@ -286,11 +282,7 @@ class userController extends VoyagerBaseController
             $view = "voyager::$slug.edit-add";
         }
 
-        $state = DB::table('states')
-        ->orderBy('estado','asc')
-        ->get();
-
-        return Voyager::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable','state'));
+        return Voyager::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable'));
     }
 
     /**
