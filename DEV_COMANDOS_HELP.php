@@ -1,5 +1,6 @@
 /*
 * Heroku testing https://medium.com/@sdkcodes/how-to-deploy-a-laravel-app-to-heroku-24b5cb33fbe
+* sisgecun.herokuapp.com
 */
 git remote set-url heroku https://git.heroku.com/sisgecun.git
 git remote add heroku https://git.heroku.com/sisgecun.git
