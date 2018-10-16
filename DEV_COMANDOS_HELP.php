@@ -1,4 +1,11 @@
 /*
+* Heroku testing https://medium.com/@sdkcodes/how-to-deploy-a-laravel-app-to-heroku-24b5cb33fbe
+*/
+git remote set-url heroku https://git.heroku.com/sisgecun.git
+git remote add heroku https://git.heroku.com/sisgecun.git
+heroku create [your_app_name]
+
+/*
 * Migraciones https://laravel.com/docs/5.7/migrations#foreign-key-constraints
 */
 php artisan migrate:refresh
