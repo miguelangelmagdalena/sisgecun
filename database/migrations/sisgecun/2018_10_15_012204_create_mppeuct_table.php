@@ -18,7 +18,7 @@ class CreateMppeuctTable extends Migration {
 			$table->string('cargo', 191);
 			$table->string('dependencia', 191);
 			$table->timestamps();
-			$table->integer('usuarios_id')->index('fk_MPPEUCT_usuarios1');
+			$table->integer('users_id')->unsigned()->index('fk_MPPEUCT_users1');
 		});
 	}
 

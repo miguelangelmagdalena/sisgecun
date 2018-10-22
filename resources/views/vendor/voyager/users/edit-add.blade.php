@@ -22,43 +22,73 @@
             @if(isset($dataTypeContent->id))
                 {{ method_field("PUT") }}
             @endif
+
+            <!-- CSRF TOKEN -->
             {{ csrf_field() }}
 
             <div class="row">
+
                 <div class="col-md-8">
-                    <div class="panel panel-bordered">
-                    {{-- <div class="panel"> --}}
-                        @if (count($errors) > 0)
-                            <div class="alert alert-danger">
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
+
+                    <!-- ### User ### -->
+                    <div class="panel panel-bordered panel-info">
+                        
+                        <div class="panel-heading">
+                                <h3 class="panel-title"><i class="icon wb-image"></i>Perfil</h3>
+                                <div class="panel-actions">
+                                    <a class="panel-action voyager-angle-down" data-toggle="panel-collapse" aria-hidden="true"></a>
+                                </div>
+                        </div>
 
                         <div class="panel-body">
-                            <div class="form-group">
-                                <label for="name">{{ __('voyager::generic.name') }}</label>
-                                <input type="text" class="form-control" id="name" name="name" placeholder="{{ __('voyager::generic.name') }}"
-                                       value="@if(isset($dataTypeContent->name)){{ $dataTypeContent->name }}@endif">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="email">{{ __('voyager::generic.email') }}</label>
-                                <input type="email" class="form-control" id="email" name="email" placeholder="{{ __('voyager::generic.email') }}"
-                                       value="@if(isset($dataTypeContent->email)){{ $dataTypeContent->email }}@endif">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="password">{{ __('voyager::generic.password') }}</label>
-                                @if(isset($dataTypeContent->password))
-                                    <br>
-                                    <small>{{ __('voyager::profile.password_hint') }}</small>
+                            
+                        @if (count($errors) > 0)
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
                                 @endif
-                                <input type="password" class="form-control" id="password" name="password" value="" autocomplete="new-password">
-                            </div>
+                                
+                                <!-- Adding / Editing -->
+                                @php
+                                    $dataTypeRows = $dataType->{(!is_null($dataTypeContent->getKey()) ? 'editRows' : 'addRows' )};
+                                @endphp
+                                
+                                @foreach($dataTypeRows as $row)
+                                    <!-- GET THE DISPLAY OPTIONS -->
+                                    @php
+                                        $options = json_decode($row->details);
+                                        $display_options = isset($options->display) ? $options->display : NULL;
+                                    @endphp
+
+                                    @if ($options && isset($options->legend) && isset($options->legend->text))
+                                        <legend class="text-{{$options->legend->align or 'center'}}" style="background-color: {{$options->legend->bgcolor or '#f0f0f0'}};padding: 5px;">{{$options->legend->text}}</legend>
+                                    @endif
+
+                                    @if ($options && isset($options->formfields_custom))
+                                        @include('voyager::formfields.custom.' . $options->formfields_custom)
+                                    @else
+                                        @if(!isset($display_options->contenedor) && $row->display_name != 'rol' && $row->display_name != 'roles')
+                                            <div class="form-group @if($row->type == 'hidden') hidden @endif col-md-{{ $display_options->width or 12 }} @if(isset($display_options->class)) {{ $display_options->class }} @endif " @if(isset($display_options->id)){{ "id=$display_options->id" }}@endif>
+                                                {{ $row->slugify }}
+                                                <label for="name">{{ $row->display_name }}</label>
+                                                @include('voyager::multilingual.input-hidden-bread-edit-add')
+                                                @if($row->type == 'relationship')
+                                                    @include('voyager::formfields.relationship')
+                                                @else
+                                                    {!! app('voyager')->formField($row, $dataType, $dataTypeContent) !!}
+                                                @endif
+
+                                                @foreach (app('voyager')->afterFormFields($row, $dataType, $dataTypeContent) as $after)
+                                                    {!! $after->handle($row, $dataType, $dataTypeContent) !!}
+                                                @endforeach
+                                            </div>
+                                        @endif
+                                    @endif
+                                @endforeach
 
                             @can('editRoles', $dataTypeContent)
                                 <div class="form-group">
@@ -82,42 +112,57 @@
 
 
                             @endcan
-
-                           
-                            
-
-                            @php
-                            if (isset($dataTypeContent->locale)) {
-                                $selected_locale = $dataTypeContent->locale;
-                            } else {
-                                $selected_locale = config('app.locale', 'en');
-                            }
-
-                            @endphp
-                            <div class="form-group">
-                                <label for="locale">{{ __('voyager::generic.locale') }}</label>
-                                <select class="form-control select2" id="locale" name="locale">
-                                    @foreach (Voyager::getLocales() as $locale)
-                                    <option value="{{ $locale }}"
-                                    {{ ($locale == $selected_locale ? 'selected' : '') }}>{{ $locale }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
+                        </div> <!-- panel-body -->
                     </div>
                 </div>
 
                 <div class="col-md-4">
+
+                    <!-- ### User Other fields ### -->
                     <div class="panel panel panel-bordered panel-warning">
+                        <div class="panel-heading">
+                                <h3 class="panel-title"><i class="icon wb-image"></i>Perfil - Datos adicionales</h3>
+                                <div class="panel-actions">
+                                    <a class="panel-action voyager-angle-down" data-toggle="panel-collapse" aria-hidden="true"></a>
+                                </div>
+                        </div>
                         <div class="panel-body">
-                            <div class="form-group">
-                                @if(isset($dataTypeContent->avatar))
-                                    <img src="{{ filter_var($dataTypeContent->avatar, FILTER_VALIDATE_URL) ? $dataTypeContent->avatar : Voyager::image( $dataTypeContent->avatar ) }}" style="width:200px; height:auto; clear:both; display:block; padding:2px; border:1px solid #ddd; margin-bottom:10px;" />
+                            @foreach($dataTypeRows as $row)
+                                <!-- GET THE DISPLAY OPTIONS -->
+                                @php
+                                    $options = json_decode($row->details);
+                                    $display_options = isset($options->display) ? $options->display : NULL;
+                                @endphp
+
+                                @if ($options && isset($options->legend) && isset($options->legend->text))
+                                    <legend class="text-{{$options->legend->align or 'center'}}" style="background-color: {{$options->legend->bgcolor or '#f0f0f0'}};padding: 5px;">{{$options->legend->text}}</legend>
                                 @endif
-                                <input type="file" data-name="avatar" name="avatar">
-                            </div>
+
+                                @if ($options && isset($options->formfields_custom))
+                                    @include('voyager::formfields.custom.' . $options->formfields_custom)
+                                @else
+                                    @if(isset($display_options->contenedor) && ($display_options->contenedor == 2))
+                                        <div class="form-group @if($row->type == 'hidden') hidden @endif col-md-{{ $display_options->width or 12 }} @if(isset($display_options->class)) {{ $display_options->class }} @endif " @if(isset($display_options->id)){{ "id=$display_options->id" }}@endif>
+                                            {{ $row->slugify }}
+                                            <label for="name">{{ $row->display_name }}</label>
+                                            @include('voyager::multilingual.input-hidden-bread-edit-add')
+                                            @if($row->type == 'relationship')
+                                                @include('voyager::formfields.relationship')
+                                            @else
+                                                {!! app('voyager')->formField($row, $dataType, $dataTypeContent) !!}
+                                            @endif
+
+                                            @foreach (app('voyager')->afterFormFields($row, $dataType, $dataTypeContent) as $after)
+                                                {!! $after->handle($row, $dataType, $dataTypeContent) !!}
+                                            @endforeach
+                                        </div>
+                                    @endif
+                                @endif
+                            @endforeach
+
                         </div>
                     </div>
+
                 </div>
             </div>
 

@@ -9,9 +9,10 @@ heroku create [your_app_name]
 /*
 * Migraciones https://laravel.com/docs/5.7/migrations#foreign-key-constraints
 */
+php artisan migrate:refresh --path="database/migrations/sisgecun"
+php artisan migrate --path="database/migrations/sisgecun"
 php artisan migrate:refresh
 php artisan migrate:refresh --seed
-php artisan migrate:refresh --seed --path="database/migrations/sisgecun"
 
 /*
 * Seed NO FUNCIONANDO POR EL ORDER (BUSCAR COMO SIN REVISION DE CLAVE FORANEA) https://laravel.com/docs/5.7/seeding

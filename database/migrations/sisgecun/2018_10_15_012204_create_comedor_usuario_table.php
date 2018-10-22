@@ -19,7 +19,7 @@ class CreateComedorUsuarioTable extends Migration {
 			$table->string('tipo_responsable', 191)->nullable();
 			$table->string('unidad_institucion', 191)->nullable();
 			$table->timestamps();
-			$table->integer('usuarios_id')->index('fk_comedor_usuario_usuarios1');
+			$table->integer('users_id')->unsigned()->index('fk_comedor_usuario_users1');
 			$table->integer('comedores_id')->index('fk_comedor_usuario_comedores1');
 		});
 	}

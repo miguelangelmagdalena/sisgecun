@@ -14,7 +14,7 @@ class AddForeignKeysToAdministradoresTable extends Migration {
 	{
 		Schema::table('administradores', function(Blueprint $table)
 		{
-			$table->foreign('usuarios_id', 'fk_administradores_usuarios1')->references('id')->on('usuarios')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+			$table->foreign('users_id', 'fk_administradores_users1')->references('id')->on('users')->onUpdate('NO ACTION')->onDelete('NO ACTION');
 		});
 	}
 
@@ -28,7 +28,7 @@ class AddForeignKeysToAdministradoresTable extends Migration {
 	{
 		Schema::table('administradores', function(Blueprint $table)
 		{
-			$table->dropForeign('fk_administradores_usuarios1');
+			$table->dropForeign('fk_administradores_users1');
 		});
 	}
 

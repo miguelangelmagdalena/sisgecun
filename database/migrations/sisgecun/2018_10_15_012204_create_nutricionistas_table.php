@@ -17,7 +17,7 @@ class CreateNutricionistasTable extends Migration {
 			$table->integer('id')->primary();
 			$table->string('estatus', 191)->nullable();
 			$table->timestamps();
-			$table->integer('usuarios_id')->index('fk_nutricionistas_usuarios1');
+			$table->integer('users_id')->unsigned()->index('fk_nutricionistas_users1');
 			$table->integer('comedores_id')->index('fk_nutricionistas_comedores1');
 		});
 	}

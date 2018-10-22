@@ -15,7 +15,7 @@ class AddForeignKeysToNutricionistasTable extends Migration {
 		Schema::table('nutricionistas', function(Blueprint $table)
 		{
 			$table->foreign('comedores_id', 'fk_nutricionistas_comedores1')->references('id')->on('comedores')->onUpdate('NO ACTION')->onDelete('NO ACTION');
-			$table->foreign('usuarios_id', 'fk_nutricionistas_usuarios1')->references('id')->on('usuarios')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+			$table->foreign('users_id', 'fk_nutricionistas_users1')->references('id')->on('users')->onUpdate('NO ACTION')->onDelete('NO ACTION');
 		});
 	}
 
@@ -30,7 +30,7 @@ class AddForeignKeysToNutricionistasTable extends Migration {
 		Schema::table('nutricionistas', function(Blueprint $table)
 		{
 			$table->dropForeign('fk_nutricionistas_comedores1');
-			$table->dropForeign('fk_nutricionistas_usuarios1');
+			$table->dropForeign('fk_nutricionistas_users1');
 		});
 	}
 

@@ -22,10 +22,17 @@ class CreateUsersTable extends Migration {
 			$table->string('password', 191);
 			$table->string('remember_token', 100)->nullable();
 			$table->text('settings', 65535)->nullable();
+			$table->string('cedula', 191)->nullable();
+			$table->string('rif', 191)->nullable();
+			$table->string('primer_nombre', 191)->nullable();
+			$table->string('segundo_nombre', 191)->nullable();
+			$table->string('primer_apellido', 191)->nullable();
+			$table->string('segundo_apellido', 191)->nullable();
+			$table->string('sexo', 191)->nullable();
+			$table->string('telefono_celular', 191)->nullable();
+			$table->string('telefono1', 191)->nullable();
+			$table->string('telefono2', 191)->nullable();
 			$table->timestamps();
-			$table->integer('id_estado')->unsigned()->nullable()->index();
-			$table->integer('id_municipio')->unsigned()->nullable()->index();
-			$table->integer('id_parroquia')->unsigned()->nullable()->index();
 		});
 	}
 

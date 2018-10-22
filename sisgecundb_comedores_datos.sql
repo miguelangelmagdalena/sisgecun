@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-10-2018 a las 03:49:34
+-- Tiempo de generación: 17-10-2018 a las 02:45:47
 -- Versión del servidor: 10.1.33-MariaDB
 -- Versión de PHP: 7.2.6
 
@@ -123,6 +123,83 @@ INSERT INTO `menu_items` (`id`, `menu_id`, `title`, `url`, `target`, `icon_class
 (27, 1, 'Estados', '/admin/states', '_self', NULL, '#000000', 22, 2, '2018-08-21 16:42:19', '2018-08-21 16:48:46', NULL, ''),
 (28, 1, 'Municipios', '/admin/municipios', '_self', NULL, '#000000', 22, 3, '2018-08-21 16:43:33', '2018-08-21 16:48:46', NULL, ''),
 (29, 1, 'Parroquias', '/admin/parroquias', '_self', NULL, '#000000', 22, 4, '2018-08-21 16:43:48', '2018-08-21 16:48:46', NULL, '');
+
+--
+-- Volcado de datos para la tabla `migrations`
+--
+
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
+(1, '2018_10_15_012204_create_administradores_table', 1),
+(2, '2018_10_15_012204_create_aireacondicionados_table', 1),
+(3, '2018_10_15_012204_create_almacenes_productos_table', 1),
+(4, '2018_10_15_012204_create_bandeja_productos_table', 1),
+(5, '2018_10_15_012204_create_bandejas_table', 1),
+(6, '2018_10_15_012204_create_categorias_table', 1),
+(7, '2018_10_15_012204_create_ciudades_table', 1),
+(8, '2018_10_15_012204_create_comedor_envio_producto_table', 1),
+(9, '2018_10_15_012204_create_comedor_producto_table', 1),
+(10, '2018_10_15_012204_create_comedor_responsable_table', 1),
+(11, '2018_10_15_012204_create_comedor_usuario_table', 1),
+(12, '2018_10_15_012204_create_comedores_table', 1),
+(13, '2018_10_15_012204_create_configuraciones_table', 1),
+(14, '2018_10_15_012204_create_data_rows_table', 1),
+(15, '2018_10_15_012204_create_data_types_table', 1),
+(16, '2018_10_15_012204_create_descripciones_table', 1),
+(17, '2018_10_15_012204_create_despachar_responsables_table', 1),
+(18, '2018_10_15_012204_create_envios_productos_table', 1),
+(19, '2018_10_15_012204_create_estados_table', 1),
+(20, '2018_10_15_012204_create_institucion_estado_table', 1),
+(21, '2018_10_15_012204_create_instituciones_table', 1),
+(22, '2018_10_15_012204_create_menu_items_table', 1),
+(23, '2018_10_15_012204_create_menus_table', 1),
+(24, '2018_10_15_012204_create_mppeuct_table', 1),
+(25, '2018_10_15_012204_create_municipios_table', 1),
+(26, '2018_10_15_012204_create_nutricionistas_table', 1),
+(27, '2018_10_15_012204_create_parroquias_table', 1),
+(28, '2018_10_15_012204_create_password_resets_table', 1),
+(29, '2018_10_15_012204_create_permission_role_table', 1),
+(30, '2018_10_15_012204_create_permissions_table', 1),
+(31, '2018_10_15_012204_create_porciones_table', 1),
+(32, '2018_10_15_012204_create_productos_despachados_table', 1),
+(33, '2018_10_15_012204_create_productos_enviados_table', 1),
+(34, '2018_10_15_012204_create_productos_recibidos_table', 1),
+(35, '2018_10_15_012204_create_productos_table', 1),
+(36, '2018_10_15_012204_create_regiones_table', 1),
+(37, '2018_10_15_012204_create_roles_table', 1),
+(38, '2018_10_15_012204_create_settings_table', 1),
+(39, '2018_10_15_012204_create_solicitudes_productos_table', 1),
+(40, '2018_10_15_012204_create_tipo_bandeja_table', 1),
+(41, '2018_10_15_012204_create_translations_table', 1),
+(42, '2018_10_15_012204_create_user_roles_table', 1),
+(43, '2018_10_15_012204_create_users_table', 1),
+(44, '2018_10_15_012206_add_foreign_keys_to_administradores_table', 1),
+(45, '2018_10_15_012206_add_foreign_keys_to_aireacondicionados_table', 1),
+(46, '2018_10_15_012206_add_foreign_keys_to_almacenes_productos_table', 1),
+(47, '2018_10_15_012206_add_foreign_keys_to_bandeja_productos_table', 1),
+(48, '2018_10_15_012206_add_foreign_keys_to_bandejas_table', 1),
+(49, '2018_10_15_012206_add_foreign_keys_to_categorias_table', 1),
+(50, '2018_10_15_012206_add_foreign_keys_to_comedor_envio_producto_table', 1),
+(51, '2018_10_15_012206_add_foreign_keys_to_comedor_producto_table', 1),
+(52, '2018_10_15_012206_add_foreign_keys_to_comedor_responsable_table', 1),
+(53, '2018_10_15_012206_add_foreign_keys_to_comedor_usuario_table', 1),
+(54, '2018_10_15_012206_add_foreign_keys_to_comedores_table', 1),
+(55, '2018_10_15_012206_add_foreign_keys_to_configuraciones_table', 1),
+(56, '2018_10_15_012206_add_foreign_keys_to_data_rows_table', 1),
+(57, '2018_10_15_012206_add_foreign_keys_to_envios_productos_table', 1),
+(58, '2018_10_15_012206_add_foreign_keys_to_institucion_estado_table', 1),
+(59, '2018_10_15_012206_add_foreign_keys_to_menu_items_table', 1),
+(60, '2018_10_15_012206_add_foreign_keys_to_mppeuct_table', 1),
+(61, '2018_10_15_012206_add_foreign_keys_to_municipios_table', 1),
+(62, '2018_10_15_012206_add_foreign_keys_to_nutricionistas_table', 1),
+(63, '2018_10_15_012206_add_foreign_keys_to_parroquias_table', 1),
+(64, '2018_10_15_012206_add_foreign_keys_to_permission_role_table', 1),
+(65, '2018_10_15_012206_add_foreign_keys_to_productos_despachados_table', 1),
+(66, '2018_10_15_012206_add_foreign_keys_to_productos_table', 1),
+(67, '2018_10_15_012206_add_foreign_keys_to_regiones_table', 1),
+(68, '2018_10_15_012206_add_foreign_keys_to_solicitudes_productos_table', 1),
+(69, '2018_10_15_012206_add_foreign_keys_to_tipo_bandeja_table', 1),
+(70, '2018_10_15_012206_add_foreign_keys_to_user_roles_table', 1),
+(71, '2018_10_15_012206_add_foreign_keys_to_users_table', 1);
 
 --
 -- Volcado de datos para la tabla `password_resets`
@@ -284,10 +361,10 @@ INSERT INTO `translations` (`id`, `table_name`, `column_name`, `foreign_key`, `l
 -- Volcado de datos para la tabla `users`
 --
 
-INSERT INTO `users` (`id`, `role_id`, `name`, `email`, `avatar`, `password`, `remember_token`, `settings`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Admin', 'admin@admin.com', 'users/default.png', '$2y$10$Bdte22LQ7DMRxiAtojqoQeP6Ve3/22LFiFrXG8AVxFtn3DLjQRumq', 'VnY0RSCl8fSE28RP4F7RGSaabonM6vtaPgF8CeCkQ1UlSyA1I1QFFR7s4WaK', '{\"locale\":\"es\"}', '2018-08-13 17:29:13', '2018-08-13 18:48:45'),
-(5, 2, 'Miguel Magdalena', 'miguelmagdalena@gmail.com', 'users/default.png', '$2y$10$FqU0hTDwBsB3Fngl7jN8Fue1kfP/nmmQblOsIQu2uF6C.gm2DHbPK', '6pve11857dpcTUoM8mb1hrShGczZkRwrsf6Fd3xY0BcyV6p6mONrR21TkL0k', NULL, '2018-08-26 06:51:59', '2018-08-26 06:51:59'),
-(6, 2, 'Miguel Magdalena', 'miguelaagdalena@gmail.com', 'users/default.png', '$2y$10$JnMMpyDmKHHbhh9z3m6Du.lxU77PI13CkV037xUGsfDEXf5sSii12', NULL, NULL, '2018-08-27 01:19:34', '2018-08-27 01:19:34');
+INSERT INTO `users` (`id`, `role_id`, `name`, `email`, `avatar`, `password`, `remember_token`, `settings`, `cedula`, `primer nombre`, `segundo nombre`, `primer apellido`, `segundo apellido`, `sexo`, `telefono_celular`, `telefono1`, `telefono2`, `rif`, `created_at`, `updated_at`) VALUES
+(1, 1, 'Admin', 'admin@admin.com', 'users/default.png', '$2y$10$Bdte22LQ7DMRxiAtojqoQeP6Ve3/22LFiFrXG8AVxFtn3DLjQRumq', 'VnY0RSCl8fSE28RP4F7RGSaabonM6vtaPgF8CeCkQ1UlSyA1I1QFFR7s4WaK', '{\"locale\":\"es\"}', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-13 17:29:13', '2018-08-13 18:48:45'),
+(5, 2, 'Miguel Magdalena', 'miguelmagdalena@gmail.com', 'users/default.png', '$2y$10$FqU0hTDwBsB3Fngl7jN8Fue1kfP/nmmQblOsIQu2uF6C.gm2DHbPK', '6pve11857dpcTUoM8mb1hrShGczZkRwrsf6Fd3xY0BcyV6p6mONrR21TkL0k', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-26 06:51:59', '2018-08-26 06:51:59'),
+(6, 2, 'Miguel Magdalena', 'miguelaagdalena@gmail.com', 'users/default.png', '$2y$10$JnMMpyDmKHHbhh9z3m6Du.lxU77PI13CkV037xUGsfDEXf5sSii12', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-27 01:19:34', '2018-08-27 01:19:34');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

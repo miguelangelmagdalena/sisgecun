@@ -15,7 +15,7 @@ class AddForeignKeysToComedorUsuarioTable extends Migration {
 		Schema::table('comedor_usuario', function(Blueprint $table)
 		{
 			$table->foreign('comedores_id', 'fk_comedor_usuario_comedores1')->references('id')->on('comedores')->onUpdate('NO ACTION')->onDelete('NO ACTION');
-			$table->foreign('usuarios_id', 'fk_comedor_usuario_usuarios1')->references('id')->on('usuarios')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+			$table->foreign('users_id', 'fk_comedor_usuario_users1')->references('id')->on('users')->onUpdate('NO ACTION')->onDelete('NO ACTION');
 		});
 	}
 
@@ -30,7 +30,7 @@ class AddForeignKeysToComedorUsuarioTable extends Migration {
 		Schema::table('comedor_usuario', function(Blueprint $table)
 		{
 			$table->dropForeign('fk_comedor_usuario_comedores1');
-			$table->dropForeign('fk_comedor_usuario_usuarios1');
+			$table->dropForeign('fk_comedor_usuario_users1');
 		});
 	}
 

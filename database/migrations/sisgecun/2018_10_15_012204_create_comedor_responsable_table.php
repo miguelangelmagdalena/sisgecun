@@ -16,7 +16,7 @@ class CreateComedorResponsableTable extends Migration {
 		{
 			$table->integer('id')->primary();
 			$table->timestamps();
-			$table->integer('usuarios_id')->index('fk_comedor_responsable_usuarios1');
+			$table->integer('users_id')->unsigned()->index('fk_comedor_responsable_users1');
 			$table->integer('comedores_id')->index('fk_comedor_responsable_comedores1');
 		});
 	}
